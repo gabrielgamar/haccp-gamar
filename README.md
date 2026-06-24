@@ -1,4 +1,4 @@
-[index.html.html](https://github.com/user-attachments/files/29304480/index.html.html)
+[index.html](https://github.com/user-attachments/files/29304480/index.html.html)
 # haccp-gamar
 HACCP<!DOCTYPE html>
 <html lang="es">
