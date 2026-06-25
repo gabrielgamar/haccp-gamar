@@ -921,6 +921,51 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+  function enviarAGoogleSheets(registro) {
+
+  const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbyyrZVRh1JtaZuWa3-BUS2dhgbHMLMEmvVTU9cfBxtI72cK8u3mk9k5sdadvc-lVyVBow/exec";
+
+  let formulario = "";
+
+  switch(registro.tipo) {
+    case "F-01":
+      formulario = "Recepcion_MP";
+      break;
+
+    case "F-02":
+      formulario = "Camaras";
+      break;
+
+    case "F-03":
+      formulario = "Elaboracion";
+      break;
+
+    case "F-04":
+      formulario = "Despacho";
+      break;
+
+    case "F-05":
+      formulario = "Acciones_Correctivas";
+      break;
+  }
+
+  fetch(URL_SCRIPT, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      formulario: formulario,
+      responsable: registro.resp,
+      producto: registro.detalle,
+      temperatura: "",
+      estado: registro.ok ? "OK" : "DESVIO"
+    })
+  })
+  .then(() => console.log("Registro enviado a Google Sheets"))
+  .catch(error => console.error("Error:", error));
+}
 </script>
 </body>
 </html>
