@@ -762,6 +762,7 @@ function guardar(id) {
   var lista = leerRegistros();
   lista.unshift(reg);
   guardarRegistros(lista);
+  enviarAGoogleSheets(reg);
   pads[id].clear();
   var respEl = document.getElementById(id + '-resp');
   if (respEl) respEl.value = '';
